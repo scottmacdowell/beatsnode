@@ -37,7 +37,7 @@ routes.set(app); //launch routes
 passport.use('beatsmusic', new BeatsMusicStrategy({
 	    clientID: config.get('BeatsAPI:client'),//Beats Client Key
 	    clientSecret: config.get('BeatsAPI:secret'),//Beats Secret Key
-	    callbackURL: "http://127.0.0.1:3000/music" //Callback URL
+	    callbackURL: "http://beatsnode.herokuapp.com//music" //Callback URL
  	},
 	function(accessToken, refreshToken, profile, done) {
 		User.findOne({ beatsid: profile.id }, function (err, user) {

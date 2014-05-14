@@ -1,6 +1,5 @@
-{
+ {
   "name": "beatsplayer",
-  "private": "true",
   "version": "0.0.0",
   "main": "lib/beatsplayer.js",
   "description": "The best module ever.",
@@ -25,7 +24,7 @@
   ],
   "keywords":[
   ],
-   "dependencies": {
+  "dependencies": {
     "async": "*",
     "body-parser": "*",
     "cookie-parser": "*",

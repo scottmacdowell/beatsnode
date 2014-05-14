@@ -1,9 +1,10 @@
 var Song = Song || {},
 	percent,
     tracks = [],
-            songList = [];;
+    songList = [];
 
-function newSong(resource, location, songList){
+function newSong(resource, location, songList, accesstoken){
+
 	Song = soundManager.createSound({
      	id: 'rtmpPlayer',
       	serverURL: resource,
@@ -46,34 +47,57 @@ function progress(percent) {
 }
 
 function playNext(songList) {
-    console.log(songList);
-            if(songList.length>0){  
-                Song.destruct();
-                //Choose Random Song & Cut from array
-                randomSong = Math.floor(Math.random()*songList.length);
-                currentSong = songList[randomSong];
-                songList.splice($.inArray(songList[randomSong], songList),1);
-                $.getJSON("https://partner.api.beatsmusic.com/v1/api/tracks/"
+    var accesstoken = $('#musicPlay').attr('data-accesstoken');
+    if(songList.length>0){  
+        Song.destruct();
+        //Choose Random Song & Cut from array
+        randomSong = Math.floor(Math.random()*songList.length);
+        currentSong = songList[randomSong];
+        songList.splice($.inArray(songList[randomSong], songList),1);
+        PlaySong(currentSong, songList);
+    } else {
+        Song.destruct();
+        $("#mobileMenu").addClass('open');
+        $("aside").addClass('open');
+        $("#play").attr('data-status', 'inactive');
+        $("div.spin").css('-webkit-transform','rotate(0deg)');
+        $('#pause').hide();
+        $("#play").show();
+    }
+}
+
+function PlaySong(currentSong, songList){
+
+            var clientid = $('#musicPlay').attr('data-client'),
+                accesstoken = $('#musicPlay').attr('data-accesstoken');
+
+            //Play Song
+            $.getJSON("https://partner.api.beatsmusic.com/v1/api/tracks/"
+                + currentSong
+                + "/audio?bitrate=highest&acquire=5&access_token="
+                + accesstoken,
+                 function(data){
+                    soundManager.onready(function(){
+                        newSong(data.data.location, data.data.resource, songList, accesstoken);
+                        $("#play").hide();
+                        $("#pause").show();
+                    });
+                }
+                    
+            );
+
+
+            $.ajax({
+                    url: "https://partner.api.beatsmusic.com/v1/api/tracks/"
                     + currentSong
-                    + "/audio?bitrate=highest&acquire=5&access_token="
-                    + accesstoken,
-                     function(data){
-                            newSong(data.data.location, data.data.resource, songList);
-                            $("#play").hide();
-                            $("#pause").show();
+                    + "?client_id="
+                    + clientid,
+                    success: function(data){
+                        $('header h1').html(data.data.artist_display_name);
+                        $('header h2').html(data.data.title);
+                        $('header p').html(data.data.refs.album.display);
                     }
-                        
-                );
-            } else {
-                 alert('eeee');
-                Song.destruct();
-                $("#mobileMenu").addClass('open');
-                $("aside").addClass('open');
-                $("#play").attr('data-status', 'inactive');
-                $("div.spin").css('-webkit-transform','rotate(0deg)');
-                $('#pause').hide();
-                $("#play").show();
-            }
+            });
         }
 
 function scrub() {
