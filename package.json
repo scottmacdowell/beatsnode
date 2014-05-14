@@ -25,6 +25,21 @@
   ],
   "keywords":[
   ],
+   "dependencies": {
+    "async": "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-session": "*",
+    "express3-handlebars": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "nconf": "*",
+    "passport": "*",
+    "passport-beatsmusic": "*",
+    "superagent": "*",
+    "winston": "*"
+  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.7.0",
     "grunt-contrib-nodeunit": "~0.2.0",
