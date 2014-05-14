@@ -1,0 +1,11 @@
+{
+    "port" : 1337,
+    "mongoose": {
+        "dev": "mongodb://localhost/dev",
+        "production": "mongodb://<username>:<password>@ds029640.mongolab.com:29640/<app name>"
+    },
+    "BeatsAPI": {
+    	"client": "client",
+    	"secret": "secret"
+    }
+}

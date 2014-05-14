@@ -1,0 +1,21 @@
+<menu id="mobileMenu">
+    <span>Playlists</span>
+    <ul>Choose a Playlist:
+    {{#each playlists}}
+        <li>
+            <a href="#{{id}}">{{name}}</a>
+            <div id="{{id}}" class="hiddenTracks">
+            {{#each tracks}}
+                <span data-trackid="{{trackid}}"></span>
+            {{/each}}
+            </div>
+        </li>
+    {{/each}}
+    </ul>
+
+    <a href="https://github.com/scottmacdowell/beatsnode">
+        <span>Beator in GitHub</span>
+        <p>View this project on GitHub</p>
+    </a>
+</menu>
+<aside></aside>

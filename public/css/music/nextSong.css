@@ -1,0 +1,44 @@
+/* MUSICPLAYER TEMPLATE ---
+---------------------------
+-- FOOTER -----------------
+-------------------------*/
+
+footer {
+	width:100%;
+	position: fixed;
+	bottom: 0px;
+	margin: 0;
+	min-width: 320px;
+}
+
+footer a {
+	width: 96%;
+	float: left;
+	background: RGBA(0, 0, 0, .3);
+	text-decoration: none;
+	padding: 0 2%;
+}
+footer a:hover { background-color: RGBA(255,255,255,.15);}
+footer a p {
+	text-indent: -9999px;
+	float: right;
+	width: 59px;
+	height: 56px;
+	margin: 1.5em 0;
+	background: url('../../images/skip_icon.png') center center no-repeat;
+}
+
+footer a h2 {
+	width: auto;
+	display: inline-block;
+	color: #ffffff;
+	text-align: left;
+	font-size: 2em;
+	margin: 1em 0;
+}
+
+
+@media only screen and (max-width: 480px) {
+	footer a h2 {font-size: 1.5em; margin: .5em 0;}
+	footer a p {background-size: 50%; margin: 0;}
+}

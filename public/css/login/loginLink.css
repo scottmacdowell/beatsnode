@@ -1,0 +1,47 @@
+/* LOGIN TEMPLATE ---
+---------------------
+-- LOGIN ------------
+--------------------*/
+
+section {float: left; width:100%; margin:5% 0 0 0;	min-width: 320px;}
+
+section a {
+	width:310px;
+	margin: 0 auto;
+	display: block;
+	-webkit-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	background-color: RGBA(0,0,0,.75);
+	-webkit-box-shadow: 0 0 0px 3px rgba(255,255,255,.1);
+	box-shadow: 0 0 0px 3px rgba(255,255,255,.2);
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 3em;
+	font-weight: bold;
+	line-height: 2em;
+	padding: 0 20px 0 25px;
+}
+section a:hover { background-color: RGBA(255,255,255,.15);}
+
+section a span {
+	text-indent: -9999px;
+	float: right;
+	width:178px;
+	height: 179px;
+	background: url('../../images/beats_logo.png') center center no-repeat;
+	position: relative;
+	right: -37px;
+	top: -134px;
+}
+
+@media only screen and (max-width: 480px) {
+	section { margin: 15% 0 0 0; }
+	section a { width: 155px; font-size: 1.5em; }
+	section a span {
+		width: 89px;
+		height: 89px;
+		background-size: 100%;
+		top: -68px;
+		right: -29px;
+	}
+}

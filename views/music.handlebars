@@ -1,0 +1,133 @@
+<link href="/css/music/meta.css" rel="stylesheet">
+{{> music/meta}}
+
+<link href="/css/music/player.css" rel="stylesheet">
+{{> music/player}}
+
+<link href="/css/music/nextSong.css" rel="stylesheet">
+{{> music/nextSong}}
+
+<link href="/css/music/playlist.css" rel="stylesheet">
+{{> music/playlist}}
+
+
+<script type="text/javascript">
+    var accesstoken = '{{access_token}}';
+    $(function() {
+        var tracks = [],
+            songList = [];
+
+        $("#mobileMenu span").click(function() {
+            if ($("#mobileMenu").hasClass('open')) {
+                $("#mobileMenu").removeClass('open');
+                $("aside").removeClass('open');
+            } else {
+                $("#mobileMenu").addClass('open');
+                $("aside").addClass('open');
+            }
+        });
+
+        $("#mobileMenu li a").click(function() {
+            if(tracks.length>0){
+                Song.destruct();
+            }   
+            event.preventDefault();
+
+            var plId = $(this).attr('href'),
+                currentSong = 0,
+                randomSong = 0;
+                tracks.length = 0;
+                songList.length = 0;
+
+            $("#mobileMenu").removeClass('open');
+            $("aside").removeClass('open');
+            $("#play").attr('data-status', 'active');
+            
+            tracks = $(this).siblings('div').children('span');
+            console.log(tracks.length);
+
+            //Queue up Tracks
+            for(var x=0; x<tracks.length; x++){
+                console.log('TRACKS:');
+                console.log($(tracks[x]).attr('data-trackid'));
+               songList.push($(tracks[x]).attr('data-trackid'));
+            }
+            
+            //Choose Random Song & Cut from array
+            randomSong = Math.floor(Math.random()*songList.length);
+            currentSong = songList[randomSong];
+            songList.splice($.inArray(songList[randomSong], songList),1);
+            PlaySong(currentSong, accesstoken, songList);
+            
+        });
+
+        function PlaySong(currentSong, accesstoken, songList){
+            var clientid = $('#musicPlay').attr('data-client');
+
+            //Play Song
+            $.getJSON("https://partner.api.beatsmusic.com/v1/api/tracks/"
+                + currentSong
+                + "/audio?bitrate=highest&acquire=5&access_token="
+                + accesstoken,
+                 function(data){
+                    soundManager.onready(function(){
+                        newSong(data.data.location, data.data.resource, songList);
+                        $("#play").hide();
+                        $("#pause").show();
+                    });
+                }
+                    
+            );
+
+
+            $.ajax({
+                    url: "https://partner.api.beatsmusic.com/v1/api/tracks/"
+                    + currentSong
+                    + "?client_id="
+                    + clientid,
+                    success: function(data){
+                        $('header h1').html(data.data.artist_display_name);
+                        $('header h2').html(data.data.title);
+                        $('header p').html(data.data.refs.album.display);
+                    }
+            });
+        }
+        $("#play").click(function() {
+            event.preventDefault();
+            console.log($(this));
+            if($(this).attr('data-status') === 'inactive'){
+                $("#mobileMenu").addClass('open');
+                $("aside").addClass('open');
+            } else {
+                Song.play();
+                $(this).hide();
+                $("#pause").show();
+            }
+        });
+
+        $("#pause").click(function() {
+            event.preventDefault();
+            Song.pause();
+            $(this).hide();
+            $("#play").show();
+        });
+
+        $("#SkipSong").click(function() {
+            event.preventDefault();  
+            playNext(songList);
+        });
+    });
+</script>
+
+<script src="/js/soundmanager2-nodebug-jsmin.js"></script>
+<script>
+soundManager.setup({
+  url: '/soundmanager/swf/',
+  flashVersion: 9, 
+  preferFlash: true
+});
+
+
+
+</script>
+<script src="/js/musicplayer.js"></script>

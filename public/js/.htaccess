@@ -1,0 +1,26 @@
+# AddType TYPE/SUBTYPE EXTENSION
+AddType audio/mpeg mp3
+AddType audio/mp4 m4a
+AddType audio/ogg ogg
+AddType audio/ogg oga
+AddType audio/webm webma
+AddType audio/wav wav
+#Gzip
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+</ifmodule>
+#End Gzip
+# 480 weeks
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+Header set Cache-Control "max-age=290304000, public"
+</FilesMatch>
+ 
+# 2 DAYS
+<FilesMatch "\.(xml|txt)$">
+Header set Cache-Control "max-age=172800, public, must-revalidate"
+</FilesMatch>
+ 
+# 2 HOURS
+<FilesMatch "\.(html|htm)$">
+Header set Cache-Control "max-age=7200, must-revalidate"
+</FilesMatch>

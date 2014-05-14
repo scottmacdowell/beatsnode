@@ -1,0 +1,68 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'i', 'allowCrossDomain' ]
+2 info using npm@1.3.24
+3 info using node@v0.10.25
+4 warn package.json beatsplayer@0.0.0 Invalid filename in 'files' list:
+5 warn package.json beatsplayer@0.0.0 Bug string field must be url, email, or {email,url}
+6 warn package.json beatsplayer@0.0.0 Normalized value of bugs field is an empty object. Deleted.
+7 warn package.json beatsplayer@0.0.0 homepage field must start with a protocol.
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'allowCrossDomain', null ]
+10 verbose cache add name=undefined spec="allowCrossDomain" args=["allowCrossDomain",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'allowCrossDomain',
+11 verbose parsed url   path: 'allowCrossDomain',
+11 verbose parsed url   href: 'allowCrossDomain' }
+12 silly lockFile 26103a6a-allowCrossDomain allowCrossDomain
+13 verbose lock allowCrossDomain /Users/scottmacdowell/.npm/26103a6a-allowCrossDomain.lock
+14 silly lockFile 26103a6a-allowCrossDomain allowCrossDomain
+15 silly lockFile 26103a6a-allowCrossDomain allowCrossDomain
+16 verbose addNamed [ 'allowCrossDomain', '' ]
+17 verbose addNamed [ null, '*' ]
+18 silly lockFile 120cfe39-allowCrossDomain allowCrossDomain@
+19 verbose lock allowCrossDomain@ /Users/scottmacdowell/.npm/120cfe39-allowCrossDomain.lock
+20 silly addNameRange { name: 'allowCrossDomain', range: '*', hasData: false }
+21 verbose url raw allowCrossDomain
+22 verbose url resolving [ 'https://registry.npmjs.org/', './allowCrossDomain' ]
+23 verbose url resolved https://registry.npmjs.org/allowCrossDomain
+24 info trying registry request attempt 1 at 20:11:40
+25 http GET https://registry.npmjs.org/allowCrossDomain
+26 http 404 https://registry.npmjs.org/allowCrossDomain
+27 silly registry.get cb [ 404,
+27 silly registry.get   { date: 'Wed, 14 May 2014 03:11:41 GMT',
+27 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     'cache-control': 'max-age=0',
+27 silly registry.get     'content-length': '52',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     age: '0',
+27 silly registry.get     'x-served-by': 'cache-v37-ASH, cache-lax1427-LAX',
+27 silly registry.get     'x-cache': 'MISS, MISS',
+27 silly registry.get     'x-cache-hits': '0, 0',
+27 silly registry.get     'x-timer': 'S1400037101.105307102,VS0,VS33,VE118,VE150',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 silly lockFile 120cfe39-allowCrossDomain allowCrossDomain@
+29 silly lockFile 120cfe39-allowCrossDomain allowCrossDomain@
+30 error 404 'allowCrossDomain' is not in the npm registry.
+30 error 404 You should bug the author to publish it
+30 error 404 It was specified as a dependency of 'beatsplayer'
+30 error 404
+30 error 404 Note that you can also install from a
+30 error 404 tarball, folder, or http url, or git url.
+31 error System Darwin 11.4.2
+32 error command "node" "/usr/local/bin/npm" "i" "allowCrossDomain"
+33 error cwd /Users/scottmacdowell/Desktop/git/beatsplayer
+34 error node -v v0.10.25
+35 error npm -v 1.3.24
+36 error code E404
+37 verbose exit [ 1, true ]

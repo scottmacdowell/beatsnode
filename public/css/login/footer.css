@@ -1,0 +1,39 @@
+/* LOGIN TEMPLATE ---
+---------------------
+-- FOOTER -----------
+--------------------*/
+
+footer {
+	width:100%;
+	position: fixed;
+	bottom: 0px;
+	min-width: 320px;
+}
+
+footer a {
+	width: 100%;
+	float: left;
+	background: RGBA(0, 0, 0, .3);
+	text-decoration: none;
+}
+footer a:hover { background-color: RGBA(255,255,255,.15);}
+footer a span {
+	text-indent: -9999px;
+	float: left;
+	width: 100%;
+	height: 62px;
+	margin: .5em 0;
+	background: url('../../images/github_icon.png') center center no-repeat;
+}
+
+footer a p {
+	width: 100%;
+	color: #ffffff;
+	text-align: center;
+	font-size: 1em;
+}
+
+@media only screen and (max-width: 480px) {
+	footer a span { height: 31px; background-size: 7%; }
+	 footer a p { font-size: .8em; }
+}
